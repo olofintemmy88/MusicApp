@@ -1,0 +1,246 @@
+*{
+    margin: 0;
+    padding:0;
+    border: 0;
+    outline: none;
+    user-select: none;
+}
+body{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:1.0rem;
+    line-height: 1.3em;
+    color: white;
+    background: rgb(63, 2, 58); 
+
+}
+#container{
+    width: 90vw;
+    min-height: 50vh;
+    background: #01022b;
+    overflow: auto;
+    margin:7vh auto;
+    border: 2px solid rgb(2, 110, 117);
+    border-radius: 30px;
+}
+
+@media screen and (min-width: 440px){
+    #container{
+    width: 400px;
+    min-height: 30vh;
+    }
+}
+
+#container::before,  #container::after{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: linear-gradient(45deg, #18013d, #0000ff, #c7bed6, #0e0127,#0000ff,#010644, #0ae73a, #ff05 );
+    background-size: 400%;
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    border-radius:0%;
+    z-index: -1;
+    
+}
+#container::after{
+    filter: blur(20px);
+}
+
+@keyframes play{
+    0%{
+        background-position: 0 0
+    }
+    50%{
+        background-position: 400% 0
+    }
+   100%{
+        background-position: 0 0
+    }
+}
+#container.play::before,  #container.play::after{
+    animation: play 20s linear infinite;
+}
+.album-art{
+    position: relative;
+    overflow: hidden;
+    height: 30vh;
+    border: 1px solid white;
+    margin-bottom: 0.25em;
+}
+.cover{
+    width:100%;
+    height: 100%;
+}
+.virtualization{
+        width: 100%;
+        height: 100%;
+        background: #ccc;
+        display: none;
+}
+.cover.showHide{
+    display: none;
+}
+.virtualization.showHide{
+    display: block;
+}
+.audio-info{
+    text-align: center;
+}
+
+.audio-info .artist{
+    font-weight: bold;
+}
+
+.buttons{
+   width: 90%;
+   display: flex;
+   justify-content: space-between;
+   margin: 1.5rem auto;
+   margin-top: 0.5em;
+   overflow: auto;
+   
+}
+
+.btn{
+   width: 50px;
+   height: 50px;
+   opacity: 0.5;
+}
+.btn:hover, .btn:active{
+   opacity: 5;
+}
+.btn:active{
+   border: 1px solid grey;
+}
+#prev{
+    background: url(./icons/previous1.jpg) center center /cover;
+}
+#play{
+    background: url(./icons/play1.jpg) center center /cover;
+    transition: background 0.3s ease-in;
+}
+#play.pause{
+    background: url(./icons/pause1.jpg) center center /cover;
+}
+#stop{
+    background: url(./icons/stop1.jpg) center center /cover;
+}
+#next{
+    background: url(./icons/next1.jpg) center center /cover;
+}
+
+
+.loop-0{
+    background: url(./icons/none.PNG) center center /cover;
+    transition: background 0.3s ease-in;
+}
+.loop-1{
+    background: url(./icons/one.PNG) center center /cover;         
+}
+.loop-2{
+    background: url(./icons/all.PNG) center center /cover;
+}
+.playlist{
+   list-style: none;
+   padding: 2px;
+   overflow: auto;
+}
+.playlist li{
+   cursor: pointer;
+   margin: 5px;
+}
+.playlist li:nth-child(2n+1){
+   background: #666;
+}
+.playlist li.active{
+   font-weight: bold;
+   padding: 3px;
+   background: #222;
+}
+.volume-control{
+   display: flex;
+   height: 30px;
+   width: 90%;
+   margin: 0 auto;
+}
+.volume-btn{
+        display: inline-block;
+        opacity: 0.8;
+        background: url(./icons/volume.jpg) no-repeat center center /cover;
+        border: none;
+        width: 20px;
+        height: 25px;
+        cursor: pointer;
+        transition: background 0.3s ease-in;
+    }
+.volume-btn.mute{
+        background: url(./icons/mute.jpg) no-repeat center center /cover;
+}
+.volume, .seeker{
+   width: 95%;
+   -webkit-appearance: none !important;
+   background: #ccc;
+   height: 1px;
+   margin-bottom: 20px;
+}
+.volume{
+align-self:flex-end;
+margin-left: 2%;
+}
+
+.volume::-webkit-slider-thumb,.seeker::-webkit-slider-thumb{
+-webkit-appearance: none !important;
+background: url(./icons/knob.PNG);
+height: 13px;
+width: 13px;
+}
+
+input[type="range"].seeker::-webkit-slider-thumb{
+background: url(./icons/seekerknob.png);
+width: 18px;
+height: 10px;
+}
+input[type="range"].seeker{
+   width: 100%;
+   height:10px;
+}
+
+.tracker{
+   display: flex;
+   position: relative;
+   width: 90%;
+   margin: 7% auto;
+   margin-bottom: 0;
+   padding: 0.25rem 0.4em 0 0.4em;
+   border-radius: 5px;
+}
+
+.tracker span{
+   display: inline-block;
+   position: absolute;
+   top: -20px;
+}
+.tracker span:last-of-type{
+   right: 5px;
+}
+footer{
+    background-color: #222;
+    color:#fff;
+    font-size: 14px;
+    bottom:0;
+    position: fixed;
+    left: 0;
+    right:0;
+    text-align: center;
+}
+footer p{
+    margin: 10px 0;
+}
+footer i{
+    color: red;
+}
+footer a {
+    color: #3C97BF;
+    text-decoration: none;
+}
